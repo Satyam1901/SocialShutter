@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link,useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast"
 import { Form, FormControl,FormField, FormItem,FormLabel, FormMessage} from "@/components/ui/form";
-  import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { SignupValidation } from "@/lib/validation";
 import Loader from "@/components/shared/Loader";
@@ -81,15 +81,15 @@ try {
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12"> Create a New Account </h2>
         <p className="text-light-3 small-medium md:base-regular mt-2">To use SocialShutter Please enter your account Details</p>
      
-    <form onSubmit={form.handleSubmit(handleSignup)} className="flex flex-col gap-2 w-full max-w-md">
+    <form role="form" aria-label="Create a account form" onSubmit={form.handleSubmit(handleSignup)} className="flex flex-col gap-2 w-full max-w-md">
       <FormField
         control={form.control}
         name="name"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="shad-form_label">Name</FormLabel>
+            <FormLabel className="shad-form_label" >Name</FormLabel>
             <FormControl>
-            <Input type= "text" className="shad-input" {...field} />
+            <Input type= "text" className="shad-input" aria-autocomplete="list" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem> 
@@ -100,9 +100,9 @@ try {
         name="username"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="shad-form_label">Username</FormLabel>
+            <FormLabel className="shad-form_label" >Username</FormLabel>
             <FormControl>
-            <Input type= "text" className="shad-input" {...field} />
+            <Input type= "text" className="shad-input"  aria-autocomplete="list" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -114,9 +114,9 @@ try {
         name="email"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="shad-form_label">Email</FormLabel>
+            <FormLabel className="shad-form_label" >Email</FormLabel>
             <FormControl>
-            <Input type= "email" className="shad-input" {...field} />
+            <Input type= "email" className="shad-input" aria-autocomplete="list" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -128,16 +128,16 @@ try {
         name="password"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="shad-form_label">Password</FormLabel>
+            <FormLabel className="shad-form_label" >Password</FormLabel>
             <FormControl>
-            <Input type= "password" className="shad-input" {...field} />
+            <Input type= "password" className="shad-input" aria-autocomplete="list" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
           
         )}
       />
-      <Button type="submit" className="shad-button_primary">
+      <Button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
    {isCreatingAccount ? (
   <div className="flex-center gap-2"> 
   <Loader /> Loading....
@@ -147,7 +147,7 @@ try {
 
       <p className="text-small-regular text-light-2 text-center mt-2">
       Already have an account?? 
-      <Link to="/sign-in" className="text-primary-500 text-small-semibold ml-3">Log In</Link>
+      <Link to="/sign-in" className="inline-block align-baseline font-bold text-sm text-blue-400 hover:text-blue-800 ml-3">Log In</Link>
     </p>
     </form>
     </div>
@@ -156,6 +156,4 @@ try {
    
   )
 }
-
-
 export default SignupForm
